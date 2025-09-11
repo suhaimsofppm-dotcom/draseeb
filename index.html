@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapo Election - Empowering Campaigns</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Lapo Election provides innovative tools for election campaigns in India, including Health ATMs, AI videos, and more. Join as a district distributor!">
+    <meta name="keywords" content="Election campaign tools India, Health ATM for elections, AI election videos">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="im/WhatsApp Image 2025-08-25 at 21.58.15_928cee1f.jpg" type="image/x-icon">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Emoji Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS with Dark/White Theme Support -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9fafb;
+            color: #1f2937;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background: #1f2937;
+            color: #ffffff;
+        }
+
+        body.dark-theme .navbar {
+            background: #14532d; /* Darker green for navbar */
+        }
+
+        body.dark-theme section {
+            background: #374151;
+        }
+
+        body.dark-theme .highlight {
+            background: #4b5563;
+        }
+
+        body.dark-theme .product-item {
+            background: #4b5563;
+        }
+
+        body.dark-theme .gallery-item {
+            background: #4b5563;
+        }
+
+        /* Color Palette */
+        :root {
+            --primary: #2ca089; /* Light Green */
+            --secondary: #f3f4f6; /* Light Gray */
+            --accent: #f97316; /* Orange Accent */
+            --bg-white: #ffffff;
+            --bg-dark: #1f2937; /* Dark for Hero */
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --text-white: #ffffff;
+        }
+
+        /* Loading Animation with Election Theme */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: hideLoader 1.5s forwards 1.5s;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid var(--secondary);
+            border-top: 6px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite, pulse 2s infinite;
+            background: url('images/vote-badge.png') center/contain no-repeat;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes hideLoader {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: var(--primary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--text-white) !important;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            animation: logoSpin 4s infinite linear;
+        }
+
+        .navbar-brand:hover {
+            color: var(--accent) !important;
+            transform: scale(1.1);
+        }
+
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .nav-link {
+            color: var(--text-white) !important;
+            font-weight: 500;
+            margin: 0 12px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-link:hover {
+            background: var(--secondary);
+            color: var(--text-dark) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* WhatsApp Icon in Navbar - Simplified, No Animation */
+        .whatsapp-icon {
+            color: var(--text-white) !important;
+            font-size: 1.5rem;
+            margin-left: 15px;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            color: var(--text-white) !important;
+            font-size: 1.5rem;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        /* Hero Section with Election-Type Animation (Confetti-like Particles) */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-white);
+            background: var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            animation: videoFadeIn 2s ease-in;
+        }
+
+        @keyframes videoFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Election-Type Animation: Confetti Particles */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti-particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            opacity: 0.7;
+            animation: confettiFall 5s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            animation: slideInFromTop 1.5s ease-out, glowText 3s infinite;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            margin: 20px 0;
+            animation: slideInFromBottom 1.5s ease-out;
+        }
+
+        .hero .btn {
+            padding: 12px 32px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            animation: pulseButton 2s infinite;
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .hero .btn-primary {
+            border: none;
+        }
+
+        .hero .btn-primary:hover {
+            background: var(--accent);
+            color: var(--text-white);
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Additional Animations for Text and Buttons */
+        @keyframes glowText {
+            0% { text-shadow: 0 0 5px var(--accent); }
+            50% { text-shadow: 0 0 20px var(--accent); }
+            100% { text-shadow: 0 0 5px var(--accent); }
+        }
+
+        @keyframes pulseButton {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideInFromTop {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromBottom {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            background: var(--bg-white);
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* About Section with Simplified Scale Animation */
+        .about .highlight {
+            padding: 20px;
+            border-radius: 12px;
+            background: var(--secondary);
+            text-align: center;
+            transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s;
+        }
+
+        .about .highlight:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+            background: var(--primary);
+            color: var(--text-white);
+        }
+
+        .about .highlight i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        /* Filter Section with Pop Animation */
+        .filter-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .filter-section .btn {
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .filter-section .btn.active {
+            background: var(--accent);
+            color: var(--text-white);
+            transform: scale(1.1);
+        }
+
+        .filter-section .btn:hover {
+            background: var(--primary);
+            color: var(--text-white);
+            transform: scale(1.1);
+        }
+
+        /* Product Card Styles with Hover Lift */
+        .product-item {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .product-item.hidden {
+            display: none;
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-item i {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            animation: iconPulse 2s infinite;
+        }
+
+        @keyframes iconPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .product-item .card-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .product-item .btn {
+            border-radius: 8px;
+            background: var(--accent);
+            border: none;
+        }
+
+        .product-item .btn:hover {
+            background: #fb923c;
+        }
+
+        /* Gallery Styles with Scale Animation */
+        .gallery .gallery-item {
+            background: var(--secondary);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .gallery .gallery-item:hover {
+            background: var(--primary);
+            color: var(--text-white);
+            transform: scale(1.1);
+        }
+
+        .gallery .gallery-item i {
+            font-size: 4rem;
+            color: var(--accent);
+            animation: iconRotate 3s infinite linear;
+        }
+
+        @keyframes iconRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Contact Section with Input Animation */
+        .contact form .form-control {
+            border-radius: 8px;
+            border: 1px solid var(--text-light);
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .contact form .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(44, 160, 137, 0.2);
+            transform: scale(1.02);
+        }
+
+        .contact .btn-success {
+            background: #25D366;
+            border-radius: 8px;
+        }
+
+        .contact .btn-success:hover {
+            background: #20b858;
+        }
+
+        /* Scroll to Top Arrow with Spin */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--text-white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary);
+            transform: rotate(360deg);
+        }
+
+        /* Mobile-First Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.3rem; }
+            .navbar-nav { text-align: center; }
+            .nav-link { margin: 10px 0; }
+            .section-title { font-size: 2rem; }
+            .product-item i { font-size: 3rem; }
+            .gallery .gallery-item i { font-size: 3.5rem; }
+            .filter-section .btn { padding: 8px 16px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar with Single WhatsApp Icon, Theme Toggle, and Login Button -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="im/WhatsApp Image 2025-08-25 at 21.58.15_928cee1f.jpg" alt="Lapo Election Logo"> Lapo Election</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">🏠 Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">ℹ️ About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">🚀 Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#distributor">🌐 Distributor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">📸 Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">📞 Contact</a></li>
+       
+                    <li class="nav-item">
+                        <a class="nav-link whatsapp-icon" href="https://wa.me/919746263653"><i class="fab fa-whatsapp"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-moon theme-toggle" id="theme-toggle"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Page (Hero) with Video, Election-Type Animation (Confetti) -->
+    <header id="home" class="hero">
+        <video autoplay muted loop playsinline loading="lazy">
+            <source src="images/welcomepage.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="confetti" id="confetti"></div>
+        <div class="container">
+            <h1>Empowering Election Campaigns</h1>
+            <p>Transform political outreach with innovative tools like Health ATMs, AI videos, and more, designed to win votes across India.</p>
+            <a href="#distributor" class="btn btn-primary">🌐 Become a Distributor</a>
+            <a href="#products" class="btn btn-primary">🚀 Explore Products</a>
+            <a href="#contact" class="btn btn-primary">📅 Schedule Demo</a>
+        </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">ℹ️ About Us</h2>
+            <p>Based in Pune, India, Lapo Election pioneers tech-driven campaign strategies to connect candidates with voters effectively.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="highlight">
+                        <i class="fas fa-users"></i>
+                        <h4>Expert Leadership</h4>
+                        <p>Founded by specialists in election logistics.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Proven Impact</h4>
+                        <p>Trusted in multi-state campaigns.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="highlight">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <h4>Scalable Reach</h4>
+                        <p>Solutions for rural and urban voters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section with Filter -->
+    <section id="products" class="products bg-light">
+        <div class="container">
+            <h2 class="section-title">🚀 Our Products</h2>
+            <div class="filter-section">
+                <button class="btn filter-btn active" data-filter="all">All</button>
+                <button class="btn filter-btn" data-filter="physical">Physical Tools</button>
+                <button class="btn filter-btn" data-filter="digital">Digital Tools</button>
+                <button class="btn filter-btn" data-filter="analytics">Analytics</button>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4 product-item" data-category="physical">
+                    <div class="product-item">
+                        <i class="fas fa-stethoscope"></i>
+                        <h5 class="card-title">🩺 Health ATM</h5>
+                        <p>Deploy at rallies for free health checkups (66 parameters). Builds trust and captures voter data ethically.</p>
+                        <p><strong>Features:</strong> Non-invasive diagnostics, branded reports, candidate messaging.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="physical">
+                    <div class="product-item">
+                        <i class="fas fa-tv"></i>
+                        <h5 class="card-title">📺 Digital Displays</h5>
+                        <p>Dynamic campaign videos in high-traffic areas. Available in 32” to 75” LED, weatherproof.</p>
+                        <p><strong>Features:</strong> Real-time updates, outdoor durability.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="physical">
+                    <div class="product-item">
+                        <i class="fas fa-camera"></i>
+                        <h5 class="card-title">📸 Photo Booth</h5>
+                        <p>Create viral moments with branded photo frames and hashtags.</p>
+                        <p><strong>Features:</strong> Custom logos, social media integration.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="physical">
+                    <div class="product-item">
+                        <i class="fas fa-coffee"></i>
+                        <h5 class="card-title">☕ Coffee Machine</h5>
+                        <p>Serve branded coffee cups with QR codes linking to campaign videos.</p>
+                        <p><strong>Features:</strong> Portable, QR code engagement.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="physical">
+                    <div class="product-item">
+                        <i class="fas fa-print"></i>
+                        <h5 class="card-title">🖨 Bluetooth Printer</h5>
+                        <p>Instantly print voter slips, coupons, or feedback forms on the go.</p>
+                        <p><strong>Features:</strong> Portable, fast printing.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="physical">
+                    <div class="product-item">
+                        <i class="fas fa-balloon"></i>
+                        <h5 class="card-title">🎈 Display Balloon</h5>
+                        <p>High-visibility branding for rallies with LED messages.</p>
+                        <p><strong>Features:</strong> Customizable LED displays.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="physical">
+                    <div class="product-item">
+                        <i class="fas fa-car"></i>
+                        <h5 class="card-title">🚐 Electric Vehicle</h5>
+                        <p>Eco-friendly mobile campaign unit for Health ATMs and displays.</p>
+                        <p><strong>Features:</strong> Mobile outreach, eco-friendly.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="digital">
+                    <div class="product-item">
+                        <i class="fas fa-robot"></i>
+                        <h5 class="card-title">🤖 AI Videos</h5>
+                        <p>Personalized videos with face morphing and regional dialects.</p>
+                        <p><strong>Features:</strong> Multilingual, voter-segmented.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 product-item" data-category="analytics">
+                    <div class="product-item">
+                        <i class="fas fa-brain"></i>
+                        <h5 class="card-title">🧠 Analytics Tools</h5>
+                        <p>Voter sentiment analysis, booth-level heatmaps, and dashboards.</p>
+                        <p><strong>Features:</strong> Real-time insights, engagement scoring.</p>
+                        <a href="#contact" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Distributor Section with Form Linked to WhatsApp -->
+    <section id="distributor" class="distributor">
+        <div class="container">
+            <h2 class="section-title">🌐 Become a Distributor</h2>
+            <p>Join our network to deploy Lapo’s innovative tools in your district.</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="highlight">
+                        <i class="fas fa-lock"></i>
+                        <h4>Exclusive Rights</h4>
+                        <p>Secure your district for distribution.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="highlight">
+                        <i class="fas fa-book"></i>
+                        <h4>Training</h4>
+                        <p>Comprehensive training and support.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="highlight">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h4>High Margins</h4>
+                        <p>Maximize profits with our products.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="highlight">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Campaign Leads</h4>
+                        <p>Access exclusive campaign opportunities.</p>
+                    </div>
+                </div>
+            </div>
+            <form class="mt-4" id="distributor-form">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="district" class="form-label">District</label>
+                        <input type="text" class="form-control" id="district" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="contact" class="form-label">Contact</label>
+                    <input type="text" class="form-control" id="contact" required>
+                </div>
+                <div class="mb-3">
+                    <label for="background" class="form-label">Election Background</label>
+                    <textarea class="form-control" id="background" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="products" class="form-label">Preferred Products</label>
+                    <input type="text" class="form-control" id="products">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery bg-light">
+        <div class="container">
+            <h2 class="section-title">📸 Campaign Gallery</h2>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="gallery-item">
+                        <i class="fas fa-users"></i>
+                        <p>Rally Engagement</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="gallery-item">
+                        <i class="fas fa-stethoscope"></i>
+                        <p>Health ATM Impact</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="gallery-item">
+                        <i class="fas fa-coffee"></i>
+                        <p>Coffee Booth Buzz</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="gallery-item">
+                        <i class="fas fa-video"></i>
+                        <p>AI Video Reach</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Form Linked to WhatsApp -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">📞 Get in Touch</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="https://wa.me/919746263653" class="btn btn-success btn-lg d-block mb-3"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                    <form id="contact-form">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="fas fa-map-marker-alt"></i> Pune HQ, India</p>
+                    <p><i class="fas fa-envelope"></i> contact@lapoelection.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Arrow -->
+    <a href="#home" class="scroll-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript for Interactivity, Video Debug, Confetti Animation, Form Submission to WhatsApp, and Theme Toggle -->
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            try {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                themeToggle.classList.toggle('fa-moon', !isDark);
+                themeToggle.classList.toggle('fa-sun', isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (error) {
+                console.error('Error toggling theme:', error);
+            }
+        });
+
+        // Load Theme Preference
+        window.addEventListener('load', () => {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark-theme');
+                    themeToggle.classList.remove('fa-moon');
+                    themeToggle.classList.add('fa-sun');
+                }
+            } catch (error) {
+                console.error('Error loading theme:', error);
+            }
+        });
+
+        // Debug Video Loading
+        window.addEventListener('load', () => {
+            try {
+                const heroVideo = document.querySelector('.hero video');
+                if (heroVideo) {
+                    heroVideo.addEventListener('error', (e) => {
+                        console.error('Video failed to load:', e);
+                        alert('Error loading video. Please ensure "images/welcomepage.mp4" is accessible.');
+                    });
+                    heroVideo.addEventListener('loadeddata', () => {
+                        console.log('Hero video loaded successfully');
+                    });
+                }
+            } catch (error) {
+                console.error('Error initializing video:', error);
+            }
+        });
+
+        // Election Confetti Animation on Welcome Page
+        function createConfetti() {
+            try {
+                const confettiContainer = document.getElementById('confetti');
+                if (!confettiContainer) return;
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('confetti-particle');
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+                    particle.style.background = Math.random() > 0.5 ? 'var(--accent)' : 'var(--primary)';
+                    confettiContainer.appendChild(particle);
+                }
+            } catch (error) {
+                console.error('Error creating confetti:', error);
+            }
+        }
+        createConfetti();
+
+        // Distributor Form Submission to WhatsApp
+        document.getElementById('distributor-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            try {
+                const name = document.getElementById('name').value;
+                const district = document.getElementById('district').value;
+                const contact = document.getElementById('contact').value;
+                const background = document.getElementById('background').value;
+                const products = document.getElementById('products').value;
+                const message = `Distributor Application:\nName: ${name}\nDistrict: ${district}\nContact: ${contact}\nElection Background: ${background}\nPreferred Products: ${products}`;
+                const whatsappUrl = `https://wa.me/919746263653?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            } catch (error) {
+                console.error('Error submitting distributor form:', error);
+                alert('Error submitting form. Please try again.');
+            }
+        });
+
+        // Contact Form Submission to WhatsApp
+        document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            try {
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                const fullMessage = `Contact Inquiry:\nEmail: ${email}\nMessage: ${message}`;
+                const whatsappUrl = `https://wa.me/919746263653?text=${encodeURIComponent(fullMessage)}`;
+                window.open(whatsappUrl, '_blank');
+            } catch (error) {
+                console.error('Error submitting contact form:', error);
+                alert('Error submitting form. Please try again.');
+            }
+        });
+
+        // Scroll-to-Top Button
+        try {
+            const scrollToTop = document.querySelector('.scroll-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTop.classList.add('visible');
+                } else {
+                    scrollToTop.classList.remove('visible');
+                }
+            });
+        } catch (error) {
+            console.error('Error initializing scroll-to-top:', error);
+        }
+
+        // Product Filter
+        try {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productItems = document.querySelectorAll('.product-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+                    productItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        } catch (error) {
+            console.error('Error initializing product filter:', error);
+        }
+    </script>
+</body>
+</html>

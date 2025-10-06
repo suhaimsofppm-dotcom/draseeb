@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <html lang="en">
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lapo Election provides innovative tools for election campaigns in India, including Health ATMs, AI videos, and more. Join as a district distributor!">
@@ -23,14 +21,6 @@
   <meta name="twitter:image" content="images/og-image.jpg">
   <link rel="icon" href="imges/logo.png" type="image/x-icon">
   <link rel="apple-touch-icon" href="imges/logo.png">
-  <link rel="manifest" href="manifest.json">
-  <link rel="canonical" href="https://lapoelection.com/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" async>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" integrity="sha512-eMxdaSf5XW3ZW1wZCrWItO2jZ7A9FhuZfjVdztr7ZsKNOmt6TUMTQgfpNoVRyfPE5S9BC0A4suXzsjxQ4q4qQNg==" crossorigin="anonymous" referrerpolicy="no-referrer" async>
-  <title>Lapo Election - Empowering Election Campaigns</title>
   <link rel="manifest" href="manifest.json">
   <link rel="canonical" href="https://lapoelection.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1261,7 +1251,7 @@
   <nav class="navbar" id="main-nav">
     <div class="container">
       <a href="#home" class="navbar-brand">
-        <img src="imges/logo.png" class="logo-img">
+        <img src="imges/logo.png" class="logo-img" alt="Lapo Election Logo">
         Lapo Election
       </a>
       <div class="nav-menu" id="nav-menu">
@@ -1335,8 +1325,6 @@
       <div class="section-title"><h2>Our Products</h2></div>
       <div class="products-intro">
         <p>Discover our innovative tools designed to enhance election campaigns and engage voters effectively.</p>
-      </div>
-      <div class="filter-section">
       </div>
       <div class="carousel-container">
         <div class="products-grid" id="product-slider">
@@ -1412,7 +1400,7 @@
         <p>Partner with Lapo Election to bring cutting-edge campaign tools to your district. Enjoy exclusive rights, high margins, and comprehensive support.</p>
       </div>
       <div class="contact-wrapper slide-in" id="distributor-form">
-        <form class="contact-form" id="distributor-form">
+        <form class="contact-form" id="distributorForm">
           <div class="form-group"><input type="text" id="name" placeholder="Your Name" required></div>
           <div class="form-group">
             <select id="district" required>
@@ -1503,7 +1491,7 @@
     <div class="container">
       <div class="section-title"><h2>Get in Touch</h2></div>
       <div class="contact-wrapper">
-        <form class="contact-form" id="contact-form">
+        <form class="contact-form" id="contactForm">
           <div class="form-group"><input type="email" id="email" placeholder="Your Email" required></div>
           <div class="form-group"><input type="tel" id="phone" placeholder="Your Phone Number (Optional)"></div>
           <div class="form-group"><textarea id="message" rows="5" placeholder="Your Message or Inquiry..." required></textarea></div>
@@ -1538,9 +1526,9 @@
             <li><i class="fas fa-envelope"></i><a href="mailto:contact@lapoelection.com">contact@lapoelection.com</a></li>
           </ul>
           <div class="footer-social">
-            <a href="https://www.instagram.com/lapoelection" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/919746263653" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.facebook.com/lapoelection" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/lapoelection" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919746263653" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/lapoelection" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
           </div>
         </div>
       </div>
@@ -1562,7 +1550,7 @@
       <div class="icon"><i class="fas fa-vote-yea"></i></div>
       <h5>Welcome to Lapo Election!</h5>
       <p>Have a question? We're here to help. Chat with us on WhatsApp:</p>
-      <a href="https://wa.me/919746263653?text=Hello%20Lapo%20Election!" class="btn btn-chat" target="_blank"><i class="fab fa-whatsapp"></i> Chat on +91 97462 63653</a>
+      <a href="https://wa.me/919746263653?text=Hello%20Lapo%20Election!" class="btn btn-chat" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Chat on +91 97462 63653</a>
     </div>
   </div>
 
@@ -1577,6 +1565,8 @@
       const chatWidget = document.getElementById('chat-widget');
       const chatCloseBtn = document.getElementById('chat-close-btn');
       const navbar = document.getElementById('main-nav');
+      const distributorForm = document.getElementById('distributorForm');
+      const contactForm = document.getElementById('contactForm');
 
       // Hide loader after page load
       window.addEventListener('load', () => {
@@ -1589,7 +1579,9 @@
       });
 
       // Navigation toggle for mobile
-      navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+      if (navToggle) {
+        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+      }
 
       // Close mobile menu when clicking a nav link
       document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
@@ -1601,7 +1593,7 @@
       // Active nav link on scroll
       window.addEventListener('scroll', () => {
         let current = '';
-        document.querySelectorAll('section, footer').forEach(section => {
+        document.querySelectorAll('section[id], footer[id]').forEach(section => {
           const sectionTop = section.offsetTop;
           if (window.scrollY >= sectionTop - 150) current = section.getAttribute('id');
         });
@@ -1609,10 +1601,11 @@
           a.classList.remove('active');
           if (a.getAttribute('href') === '#' + current) a.classList.add('active');
         });
-        scrollToTopBtn.classList.toggle('show', window.scrollY > 300);
+        if (scrollToTopBtn) scrollToTopBtn.classList.toggle('show', window.scrollY > 300);
       });
 
       // Fade-in and slide-in animations for sections
+      const observerOptions = { threshold: 0.1 };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1620,136 +1613,135 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1 });
+      }, observerOptions);
 
-      document.querySelectorAll('.fade-in-section, .slide-in, .bounce-in').forEach(fader => observer.observe(fader));
+      document.querySelectorAll('.fade-in-section, .slide-in, .bounce-in').forEach(el => {
+        if (el) observer.observe(el);
+      });
 
       // Chat widget toggle
-      chatLauncher.addEventListener('click', () => chatWidget.classList.toggle('show'));
-      chatCloseBtn.addEventListener('click', () => chatWidget.classList.remove('show'));
+      if (chatLauncher) chatLauncher.addEventListener('click', () => chatWidget.classList.toggle('show'));
+      if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => chatWidget.classList.remove('show'));
 
-      // Product filter and carousel
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const productItems = document.querySelectorAll('.product-card');
-      let slider = tns({
-        container: '#product-slider',
-        items: 3,
-        slideBy: 1,
-        autoplay: true,
-        autoplayButtonOutput: false,
-        controls: false,
-        nav: true,
-        speed: 600,
-        gutter: 20,
-        responsive: {
-          0: { items: 1 },
-          768: { items: 2 },
-          992: { items: 3 }
-        }
-      });
-
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          const filter = button.getAttribute('data-filter');
-          productItems.forEach(item => {
-            item.classList.remove('is-visible');
-            if (filter === 'all' || item.getAttribute('data-category') === filter) {
-              item.style.display = 'flex';
-              setTimeout(() => item.classList.add('is-visible'), 50);
-            } else {
-              item.style.display = 'none';
-            }
-          });
-          slider.destroy();
-          slider = tns({
-            container: '#product-slider',
-            items: 3,
-            slideBy: 1,
-            autoplay: true,
-            autoplayButtonOutput: false,
-            controls: false,
-            nav: true,
-            speed: 600,
-            gutter: 20,
-            responsive: {
-              0: { items: 1 },
-              768: { items: 2 },
-              992: { items: 3 }
-            }
-          });
+      // Product carousel (no filter buttons, so skip filter logic)
+      let slider;
+      if (typeof tns !== 'undefined') {
+        slider = tns({
+          container: '#product-slider',
+          items: 3,
+          slideBy: 1,
+          autoplay: true,
+          autoplayButtonOutput: false,
+          controls: false,
+          nav: true,
+          speed: 600,
+          gutter: 20,
+          responsive: {
+            0: { items: 1 },
+            768: { items: 2 },
+            992: { items: 3 }
+          }
         });
-      });
+      }
 
       // Smooth scroll for distributor form
       document.querySelectorAll('a[href="#distributor-form"]').forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
-          document.getElementById('distributor-form').scrollIntoView({ behavior: 'smooth' });
-          const form = document.getElementById('distributor-form');
-          form.classList.add('is-visible');
+          const target = document.getElementById('distributor-form');
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            target.classList.add('is-visible');
+          }
         });
       });
 
-      // Simulated storage using localStorage
+      // Local storage save function
       const saveToLocalStorage = (key, data) => {
-        let storedData = JSON.parse(localStorage.getItem(key)) || [];
-        storedData.push(data);
-        localStorage.setItem(key, JSON.stringify(storedData));
+        try {
+          let storedData = JSON.parse(localStorage.getItem(key)) || [];
+          storedData.push(data);
+          localStorage.setItem(key, JSON.stringify(storedData));
+        } catch (error) {
+          console.error('LocalStorage error:', error);
+        }
       };
 
       // Distributor form submission
-      document.getElementById('distributor-form').addEventListener('submit', e => {
-        e.preventDefault();
-        const submitButton = e.target.querySelector('button');
-        submitButton.classList.add('loading');
-        submitButton.disabled = true;
+      if (distributorForm) {
+        distributorForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const submitButton = distributorForm.querySelector('button[type="submit"]');
+          if (submitButton) {
+            submitButton.classList.add('loading');
+            submitButton.disabled = true;
+          }
 
-        const name = document.getElementById('name').value;
-        const district = document.getElementById('district').value;
-        const contact = document.getElementById('contact').value;
-        const background = document.getElementById('background').value;
-        const products = document.getElementById('products').value;
+          const name = document.getElementById('name').value;
+          const district = document.getElementById('district').value;
+          const contact = document.getElementById('contact').value;
+          const background = document.getElementById('background').value;
+          const products = document.getElementById('products').value;
 
-        const distributorData = { name, district, contact, background, products, timestamp: new Date().toISOString() };
-        saveToLocalStorage('distributors', distributorData);
+          const distributorData = { 
+            name, 
+            district, 
+            contact, 
+            background, 
+            products, 
+            timestamp: new Date().toISOString() 
+          };
+          saveToLocalStorage('distributors', distributorData);
 
-        setTimeout(() => {
-          const message = `*Distributor Application*\nName: ${name}\nDistrict: ${district}\nContact: ${contact}\nElection Background: ${background}\nPreferred Products: ${products}`;
-          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-          submitButton.classList.remove('loading');
-          submitButton.disabled = false;
-          e.target.reset();
-          alert('Application sent successfully!');
-        }, 2000);
-      });
+          setTimeout(() => {
+            const message = `*Distributor Application*\nName: ${name}\nDistrict: ${district}\nContact: ${contact}\nElection Background: ${background}\nPreferred Products: ${products}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+            if (submitButton) {
+              submitButton.classList.remove('loading');
+              submitButton.disabled = false;
+            }
+            distributorForm.reset();
+            alert('Application sent successfully!');
+          }, 2000);
+        });
+      }
 
       // Contact form submission
-      document.getElementById('contact-form').addEventListener('submit', e => {
-        e.preventDefault();
-        const submitButton = e.target.querySelector('button');
-        submitButton.classList.add('loading');
-        submitButton.disabled = true;
+      if (contactForm) {
+        contactForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          if (submitButton) {
+            submitButton.classList.add('loading');
+            submitButton.disabled = true;
+          }
 
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
+          const email = document.getElementById('email').value;
+          const phone = document.getElementById('phone').value;
+          const message = document.getElementById('message').value;
 
-        const contactData = { email, phone, message, timestamp: new Date().toISOString() };
-        saveToLocalStorage('contacts', contactData);
+          const contactData = { 
+            email, 
+            phone, 
+            message, 
+            timestamp: new Date().toISOString() 
+          };
+          saveToLocalStorage('contacts', contactData);
 
-        setTimeout(() => {
-          let text = `*Contact Inquiry*\nEmail: ${email}`;
-          if (phone) text += `\nPhone: ${phone}`;
-          text += `\nMessage: ${message}`;
-          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
-          submitButton.classList.remove('loading');
-          submitButton.disabled = false;
-          e.target.reset();
-          alert('Message sent successfully!');
-        }, 2000);
-      });
+          setTimeout(() => {
+            let text = `*Contact Inquiry*\nEmail: ${email}`;
+            if (phone) text += `\nPhone: ${phone}`;
+            text += `\nMessage: ${message}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+            if (submitButton) {
+              submitButton.classList.remove('loading');
+              submitButton.disabled = false;
+            }
+            contactForm.reset();
+            alert('Message sent successfully!');
+          }, 2000);
+        });
+      }
     });
   </script>
 </body>
